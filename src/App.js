@@ -1,11 +1,12 @@
-import React,{ useState } from "react";
-import { Dimensions, StatusBar } from "react-native";
+import React,{ useState, Component } from "react";
+import { Dimensions, StatusBar,Image, View, StyleSheet } from "react-native";
 import styled,{ThemeProvider} from "styled-components/native";
 import { theme } from "./theme";
 import Input from "./components/Input";
 // import IconButton from "./components/IconButton";
 // import { images } from "./images";
 import Task from "./components/Task";
+import Trip from '../assets/images/trip.png'
 
 
 const Container = styled.SafeAreaView`
@@ -27,16 +28,22 @@ const List = styled.ScrollView`
     width: ${({width})=>width-40}px;
 `;
 
+const tripImg = styled.Image`
+    width: 10px;
+    height: 10px;
+    margin: 100px;
+`;
+
 
 export default function App(){
     const width = Dimensions.get('window').width;
 
     const [newTask, setNewTask] = useState('');
     const [tasks, setTasks] = useState({
-        '1':{id:'1', text: 'Hanbit', completed: false},
-        '2':{id:'2', text: 'React Native', completed: true},
-        '3':{id:'3', text: 'React Native Sample', completed: false},
-        '4':{id:'4', text: 'Edit TODO Item', completed: false},
+        '1':{id:'1', text: '두부네모 가평여행1', completed: false},
+        '2':{id:'2', text: '두부네모 가평여행2', completed: true},
+        '3':{id:'3', text: '두부네모 가평여행3', completed: false},
+        '4':{id:'4', text: '두부네모 가평여행4', completed: false},
     });
 
     const _addTask = () => {
@@ -68,12 +75,9 @@ export default function App(){
     return(
         <ThemeProvider theme={theme}>
             <Container>
-                <Title>할일</Title>
-                <Input placeholder="+해야할 일을 추가하세요"
-                value={newTask}
-                onChangeText={_handleTextChange}
-                onSubmitEditing={_addTask}
-                />
+                <View>
+                <Trip source={Trip} style={tripImg}/>
+                </View>
                 <List width={width}>
                     {Object.values(tasks)
                     .reverse()
@@ -81,6 +85,11 @@ export default function App(){
                         <Task key={item.id} item={item} deleteTask={_deleteTask} toggleTask={_toggleTask}/>
                     ))}
                 </List>
+                <Input placeholder="+해야할 일을 추가하세요"
+                value={newTask}
+                onChangeText={_handleTextChange}
+                onSubmitEditing={_addTask}
+                />
             </Container>
         </ThemeProvider>
     );

@@ -10,6 +10,7 @@ const StyledInput = styled.TextInput.attrs(({theme})=>({placeholderTextColor:the
     padding: 15px 20px;
     border-radius: 10px;
     align-self: center;
+    
     background-color: ${({theme})=>theme.itemBackground};
     font-size: 25px;
     color: ${({theme})=>theme.text};
