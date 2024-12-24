@@ -17,4 +17,4 @@ React - Native: calenders, image-picker, navigation, asyncstorage, date-picker, 
 
 박서준: 한 달 일정 관리 페이지 제작 및 코드 병합
 
-조윤서: 다이어리 작성 페이지 제작
+조윤서: 다이어리 작성 페이지 제작 및 최종발표
